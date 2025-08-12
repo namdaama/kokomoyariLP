@@ -7,34 +7,34 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a static landing page for "ココもやり展" (Kokomoyari Exhibition), a philosophy exhibition website. The project consists of a simple HTML/CSS structure without any build tools or JavaScript framework.
+「ココもやり展」の哲学展示会ウェブサイトのランディングページ。ビルドツールやJavaScriptフレームワークを使用せず、シンプルなHTML/CSS構造で構成されている静的サイト。
 
 ## Project Structure
 
-- `index.html` - Main landing page with sections for concept, event info, access, and contact form
-- `style.css` - Minimal, responsive CSS using modern features (CSS custom properties, clamp(), container queries)
-- `kokomoyariLP/` - Empty directory (purpose unclear)
+- `index.html` - ランディングページ（コンセプト、イベント情報、アクセス、問い合わせフォームを含む）
+- `style.css` - レスポンシブデザインのCSS（CSS変数、clamp()、コンテナクエリを活用）
+- `kokomoyariLP/` - 空のディレクトリ（用途不明）
 
-## Development Notes
+## 開発メモ
 
-### Form Handling
-The contact form in `index.html` currently has a placeholder `ACTION_URL` that needs to be configured with an actual form handler endpoint.
+### フォーム処理
+`index.html`の問い合わせフォームには、実際のフォームハンドラーエンドポイントの設定が必要（現在は`ACTION_URL`がプレースホルダー）。
 
-### Missing Assets
-- `/assets/favicon.png` - Referenced but not present
-- OGP image (`https://example.com/ogp.jpg`) - Placeholder URL needs updating
+### 不足しているアセット
+- `/assets/favicon.png` - 参照されているが存在しない
+- OGP画像（`https://example.com/ogp.jpg`） - プレースホルダーURLの更新が必要
 
-### Deployment Configuration
-The OGP URL meta tag references a GitHub Pages deployment pattern but needs the actual username configured.
+### デプロイ設定
+OGP URLメタタグはGitHub Pagesデプロイメントパターンを参照しているが、実際のユーザー名の設定が必要。
 
-### CSS Architecture
-- Uses CSS custom properties for consistent spacing and breakpoints
-- Mobile-first responsive design with minimal media queries
-- System font stack for optimal performance across platforms
+### CSSアーキテクチャ
+- CSS変数を使用した一貫性のあるスペーシングとブレークポイント
+- 最小限のメディアクエリによるモバイルファーストのレスポンシブデザイン
+- 各プラットフォームで最適なパフォーマンスを実現するシステムフォントスタック
 
-## Important Considerations
+## 重要事項
 
-1. This is a pure static site with no build process
-2. All changes can be tested by opening `index.html` directly in a browser
-3. The site is in Japanese and targets a Japanese audience
-4. Form submissions require external handling (no backend present)
+1. ビルドプロセスのない純粋な静的サイト
+2. すべての変更は`index.html`をブラウザで直接開いてテスト可能
+3. 日本語のサイトで、日本の観客をターゲットとしている
+4. フォーム送信には外部処理が必要（バックエンドなし）
