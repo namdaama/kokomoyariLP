@@ -194,6 +194,38 @@ input, textarea { width:100%; padding:.65rem .75rem; border:1px solid #bbb; bord
   margin-top: 0.5rem;
 }
 
+/* 画像スタイル */
+.hero-image {
+  margin-top: 2rem;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+
+.hero-image img,
+.team-image img,
+.actual-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.team-image,
+.actual-image {
+  margin-top: 2rem;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.image-caption {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
 @media (hover:hover) { 
   .btn:hover { transform: translateY(-1px); }
 }
