@@ -69,6 +69,7 @@
   --breakpoint-md: 768px;
   --breakpoint-lg: 1024px;
 }
+
 /* ===============================
    Base Styles
    =============================== */
@@ -117,9 +118,17 @@ h2 {
 }
 
 .tagline { 
-  margin: 0 0 var(--spacing-lg); 
-  font-size: var(--font-size-md); 
-  opacity: 0.9; 
+  margin: 0 0 var(--spacing-sm); 
+  font-size: var(--font-size-xl); 
+  font-weight: bold;
+  color: var(--color-text);
+}
+
+.sub-tagline { 
+  margin: 0 0 var(--spacing-xl); 
+  font-size: var(--font-size-base); 
+  opacity: 0.8; 
+  color: var(--color-text-light);
 }
 
 ul { 
@@ -137,6 +146,22 @@ ul {
   text-decoration: none;
   color: var(--color-primary);
   transition: var(--transition-base);
+  position: relative;
+}
+
+.btn-instagram:hover {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  color: white;
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(188, 24, 136, 0.3);
+}
+
+.btn-subtext {
+  display: block;
+  font-size: var(--font-size-xs);
+  opacity: 0.7;
+  margin-top: -0.2rem;
 }
 
 /* ===============================
@@ -165,6 +190,7 @@ textarea {
   font-size: var(--font-size-sm); 
   opacity: 0.8; 
 }
+
 /* ===============================
    Content Components
    =============================== */
