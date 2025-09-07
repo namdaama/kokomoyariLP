@@ -65,6 +65,29 @@ h2::before {
   box-shadow: 0 4px 12px rgba(188, 24, 136, 0.3);
 }
 
+.btn-x:hover {
+  background: #000;
+  color: white;
+  border-color: #000;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.social-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+}
+
+.social-buttons .btn {
+  flex: 1;
+  min-width: 200px;
+  max-width: 200px;
+  text-align: center;
+}
+
 .btn-subtext {
   display: block;
   font-size: 0.75rem;
@@ -345,5 +368,15 @@ input, textarea { width:100%; padding:.65rem .75rem; border:1px solid #bbb; bord
   
   .theme-card {
     transform: none !important;
+  }
+  
+  .social-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .social-buttons .btn {
+    width: 100%;
+    max-width: 280px;
   }
 }
