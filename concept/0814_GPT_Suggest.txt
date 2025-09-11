@@ -1,0 +1,126 @@
+高優先度で直す（9/1公開を強くする5点）
+
+以下をコピー＆ペーストで反映していこう。差分は最小、効果は最大。
+
+1) <head>の“プレゼンス強化”
+
+OGP・Twitterカード・構造化データ（Event）・canonicalを入れる。og:image と og:url は実URLに差し替え。
+
+<!-- 追加/差し替え（<head>内） -->
+<title>哲学展 ココもやり展 vol.3</title>
+<meta name="description" content="エルパで付箋に人生の答えを書くイベント。2025年9月14日（日）10:00–17:00、ラブリーパートナーエルパ2F エルパホールで開催。参加無料。">
+<link rel="canonical" href="https://あなたのユーザー名.github.io/kokomoyari/">
+
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="ココもやり展">
+<meta property="og:title" content="哲学展 ココもやり展 vol.3">
+<meta property="og:description" content="エルパで付箋に人生の答えを書くイベント。参加無料。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://あなたのユーザー名.github.io/kokomoyari/">
+<meta property="og:image" content="https://あなたのユーザー名.github.io/kokomoyari/assets/ogp.jpg">
+
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- 構造化データ（Event） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "name": "哲学展 ココもやり展 vol.3",
+  "description": "エルパで付箋に人生の答えを書く参加型展示。",
+  "startDate": "2025-09-14T10:00:00+09:00",
+  "endDate": "2025-09-14T17:00:00+09:00",
+  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "isAccessibleForFree": true,
+  "image": ["https://あなたのユーザー名.github.io/kokomoyari/assets/ogp.jpg"],
+  "location": {
+    "@type": "Place",
+    "name": "ラブリーパートナーエルパ 2F エルパホール",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "大和田2-1212",
+      "addressLocality": "福井市",
+      "addressRegion": "福井県",
+      "postalCode": "910-0836",
+      "addressCountry": "JP"
+    }
+  },
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" },
+  "organizer": { "@type": "Organization", "name": "ココもやり展" }
+}
+</script>
+
+
+OGP画像は 1200×630px 推奨。仮でも良いので assets/ogp.jpg を置いて先に動かす。
+
+2) フォームを“本当に届く”形に（Formspree想定）
+
+ACTION_URL を実エンドポイントに差し替え。自動返信やThanks遷移は後回しでOK。まずは受信を保証。
+
+<form action="https://formspree.io/f/xxxxabcd" method="POST" class="form">
+  <label>お名前<input name="name" autocomplete="name" required></label>
+  <label>メール<input type="email" name="email" autocomplete="email" required></label>
+  <label>内容<textarea name="message" rows="5" required></textarea></label>
+
+  <!-- スパム対策（ハニーポット） -->
+  <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+  <!-- 件名（管理用） -->
+  <input type="hidden" name="_subject" value="ココもやり展 お問い合わせ">
+
+  <button type="submit" class="btn">送信</button>
+</form>
+
+
+受信確認できたら、/thanks.html を用意して _next（旧API）やFormspree側のRedirect設定で遷移させれば十分。
+
+3) “3つのテーマ”は折りたたみで全5問まで見せ切る
+
+トップは今の2問＋「他3つ」で軽く、詳細は <details> に格納して5問全部を置く（情報探索の手応えUP／滞在時間UP）。
+
+<details>
+  <summary>🎓 就活生の本音（青）— 全5問を見る</summary>
+  <ol>
+    <li>面接で「自分らしさ」を…本当のあなたですか？</li>
+    <li>就活を始めてから「これは違う」と感じた瞬間は…？</li>
+    <li>「安定」と「挑戦」、どちらかしか選べないとしたら…？</li>
+    <li>「必要とされる人」と「なりたい自分」、どちらが先…？</li>
+    <li>もし「就職しない」選択肢があったら…？</li>
+  </ol>
+</details>
+
+
+※文面は企画書どおりでOK（LPでは句読点と重複表現だけ少し間引く）。
+
+4) マップ埋め込みの“レスポンシブ最適化”
+
+iframeは横幅に強いが縦が伸びがち。アスペクト比コンテナで固定してCLSを防ぐ。
+
+/* 追加（style.css） */
+.map { position: relative; width: 100%; aspect-ratio: 16 / 9; }
+.map iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
+
+
+HTMLは width/height を外してOK（loading="lazy" は現状のままで良い）。
+
+5) 画像の軽量化＆将来の地雷回避
+
+いま参照している .JPG / .PNG はOK。リポジトリにある .HEIC はブラウザ非対応が多いので、使うなら .jpg/.webp に変換してからリンクする。
+
+<img> には既に loading="lazy" があるので、さらに decoding="async" を足して初期表示を軽くする。
+
+<img src="image/回答している様子.JPG" alt="参加者が付箋に回答を書いている様子" loading="lazy" decoding="async">
+
+===
+
+文言の微整形（そのまま置換OK）
+
+ヒーロー下の箇条書き：
+
+日時：2025年9月14日（日）10:00–17:00
+
+会場：ラブリーパートナーエルパ 2F エルパホール
+
+参加費：無料
+
+形式：テーマ別5問に付箋で回答する参加型展示
