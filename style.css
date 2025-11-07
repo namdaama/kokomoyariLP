@@ -1,14 +1,16 @@
 /* style.css */
-:root { 
-  --w: 720px; 
-  --r: 1rem; 
+:root {
+  --w: 720px;
+  --r: 1rem;
   --rr: 1.5rem;
   --blue: #4a90e2;
   --pink: #ff6b9d;
   --green: #66bb6a;
+  --yellow: #ffd700;
   --light-blue: #e3f2fd;
   --light-pink: #fce4ec;
   --light-green: #e8f5e9;
+  --light-yellow: #fffacd;
 }
 * { box-sizing: border-box; }
 body { margin:0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Hiragino Sans", "Noto Sans JP", sans-serif; line-height:1.7; }
@@ -197,6 +199,11 @@ input, textarea { width:100%; padding:.65rem .75rem; border:1px solid #bbb; bord
   border-left: 4px solid var(--green);
 }
 
+.theme-yellow {
+  background: var(--light-yellow);
+  border-left: 4px solid var(--yellow);
+}
+
 .theme-card h3 {
   margin: 0 0 0.5rem;
   font-size: 1.2rem;
@@ -261,6 +268,60 @@ input, textarea { width:100%; padding:.65rem .75rem; border:1px solid #bbb; bord
   font-style: italic;
 }
 
+/* イベント切り替えタブ */
+.event-toggle {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem auto;
+  max-width: 500px;
+}
+
+.event-toggle-btn {
+  flex: 1;
+  padding: 1rem 1.5rem;
+  background: #f5f5f5;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.event-toggle-btn:hover {
+  background: #e8e8e8;
+  transform: translateY(-2px);
+}
+
+.event-toggle-btn.active {
+  background: linear-gradient(135deg, #333, #111);
+  color: white;
+  border-color: #333;
+}
+
+.event-toggle-btn .event-date {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: normal;
+  opacity: 0.8;
+  margin-top: 0.25rem;
+}
+
+/* コンテンツの表示制御 */
+[data-vol] {
+  display: block;
+}
+
+body:not(.show-vol3) [data-vol="3"] {
+  display: none;
+}
+
+body:not(.show-vol4) [data-vol="4"] {
+  display: none;
+}
+
 @media (hover:hover) { 
   .btn:hover { transform: translateY(-1px); }
 }
@@ -286,28 +347,37 @@ input, textarea { width:100%; padding:.65rem .75rem; border:1px solid #bbb; bord
     grid-template-columns: 1fr;
     gap: 1rem;
   }
-  
+
   .flow-item {
     padding: 0.8rem;
     background: transparent;
   }
-  
+
   .flow-item:hover {
     transform: none;
     box-shadow: none;
   }
-  
+
   .flow-number {
     width: 40px;
     height: 40px;
     font-size: 1rem;
   }
-  
+
   .themes-container {
     grid-template-columns: 1fr;
   }
-  
+
   .theme-card {
     transform: none !important;
+  }
+
+  .event-toggle {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .event-toggle-btn {
+    padding: 0.875rem 1.25rem;
   }
 }

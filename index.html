@@ -25,6 +25,17 @@
   </div>
 </header>
 
+<div class="container">
+  <div class="event-toggle">
+    <button class="event-toggle-btn" data-toggle="vol3">
+      vol.3<span class="event-date">2025年9月14日（日）</span>
+    </button>
+    <button class="event-toggle-btn" data-toggle="vol4">
+      vol.4<span class="event-date">2025年11月8日（土）</span>
+    </button>
+  </div>
+</div>
+
 <main class="container">
   <section id="concept">
     <h2>コンセプト</h2>
@@ -38,7 +49,7 @@
     </div>
   </section>
 
-  <section id="flow">
+  <section id="flow" data-vol="3">
     <h2>体験の流れ</h2>
     <div class="flow-container">
       <div class="flow-item">
@@ -73,7 +84,42 @@
     </div>
   </section>
 
-  <section id="themes">
+  <section id="flow" data-vol="4">
+    <h2>体験の流れ</h2>
+    <div class="flow-container">
+      <div class="flow-item">
+        <span class="flow-number">1</span>
+        <h3>問いを選ぶ</h3>
+        <p>3つの問いから選択</p>
+      </div>
+      <div class="flow-item">
+        <span class="flow-number">2</span>
+        <h3>付箋に答えを書く</h3>
+        <p>あなたの考えを記入</p>
+      </div>
+      <div class="flow-item">
+        <span class="flow-number">3</span>
+        <h3>壁に貼る</h3>
+        <p>あなたの答えを共有</p>
+      </div>
+      <div class="flow-item">
+        <span class="flow-number">4</span>
+        <h3>他の回答を見る</h3>
+        <p>多様な価値観に触れる</p>
+      </div>
+      <div class="flow-item">
+        <span class="flow-number">5</span>
+        <h3>哲学とは？を見る</h3>
+        <p>マインドマップを展示</p>
+      </div>
+    </div>
+    <div class="actual-image">
+      <img src="image/紹介ストーリー.PNG" alt="実際の展示と付箋の様子" loading="lazy">
+      <p class="image-caption">過去開催時の様子</p>
+    </div>
+  </section>
+
+  <section id="themes" data-vol="3">
     <h2>3つのテーマ</h2>
     <div class="themes-container">
       <div class="theme-card theme-blue">
@@ -106,13 +152,57 @@
     </div>
   </section>
 
-  <section id="info">
+  <section id="themes" data-vol="4">
+    <h2>3つの問い</h2>
+    <div class="themes-container">
+      <div class="theme-card theme-yellow">
+        <h3>📏 普通とはなにか？</h3>
+        <p class="theme-subtitle">黄色の付箋</p>
+        <div class="theme-questions">
+          <p class="question">多様性が叫ばれる時代に、なぜ「普通」という基準が存在し続けるのでしょうか。</p>
+          <p class="question">自分が「普通」だと思っていることは、本当に普通なのでしょうか。</p>
+          <p class="question">「普通じゃない」と言われることは、何を意味するのでしょうか。</p>
+        </div>
+      </div>
+      <div class="theme-card theme-green">
+        <h3>🌆 都会への憧れはある？</h3>
+        <p class="theme-subtitle">緑の付箋</p>
+        <div class="theme-questions">
+          <p class="question">地方に住む人々が感じる「都会」のイメージとは何でしょうか。</p>
+          <p class="question">福井で生きることと、都会で生きることの違いは何でしょうか。</p>
+          <p class="question">「都会に行けば何かが変わる」という期待は、何に基づいているのでしょうか。</p>
+        </div>
+      </div>
+      <div class="theme-card theme-pink">
+        <h3>🔢 数字で自分を評価されるのを、どう感じる？</h3>
+        <p class="theme-subtitle">ピンクの付箋</p>
+        <div class="theme-questions">
+          <p class="question">成績、年収、フォロワー数など、数字による評価が溢れる社会。</p>
+          <p class="question">数値化できない自分の価値とは何でしょうか。</p>
+          <p class="question">数字で測れることと測れないこと、どちらが「自分」なのでしょうか。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="info" data-vol="3">
     <h2>開催情報</h2>
     <ul>
       <li><strong>開催日：</strong>2025年9月14日（日）10:00 - 17:00</li>
       <li><strong>会場：</strong>ラブリーパートナーエルパ 2F エルパホール</li>
       <li><strong>料金：</strong>無料</li>
       <li><strong>備考：</strong>入退場自由・写真撮影可</li>
+    </ul>
+  </section>
+
+  <section id="info" data-vol="4">
+    <h2>開催情報</h2>
+    <ul>
+      <li><strong>開催日：</strong>2025年11月8日（土）10:00 - 16:00</li>
+      <li><strong>会場：</strong>ラブリーパートナーエルパ 2F エルパホール</li>
+      <li><strong>料金：</strong>無料</li>
+      <li><strong>主催：</strong>COTチャレンジ応援チーム（チャレンジ応援ディレクター：寺井優介）</li>
+      <li><strong>備考：</strong>「チャレンジ応援文化祭」の一企画として開催・入退場自由・写真撮影可</li>
     </ul>
   </section>
 
@@ -156,4 +246,69 @@
 <footer class="footer">
   <div class="container">© ココもやり展</div>
 </footer>
+
+<script>
+(function() {
+  'use strict';
+
+  // 切り替えボタンの取得
+  const toggleButtons = document.querySelectorAll('.event-toggle-btn');
+
+  // 初期表示の設定
+  function initializeView() {
+    // URLハッシュから表示するバージョンを判定
+    const hash = window.location.hash.substring(1); // #を除去
+    let targetVol = 'vol4'; // デフォルトはvol4
+
+    if (hash === 'vol3' || hash === 'vol4') {
+      targetVol = hash;
+    }
+
+    // 表示を切り替え
+    switchVersion(targetVol);
+  }
+
+  // バージョン切り替え関数
+  function switchVersion(version) {
+    // bodyのクラスを更新
+    document.body.classList.remove('show-vol3', 'show-vol4');
+    document.body.classList.add('show-' + version);
+
+    // ボタンのアクティブ状態を更新
+    toggleButtons.forEach(btn => {
+      const btnVersion = btn.getAttribute('data-toggle');
+      if (btnVersion === version) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+
+    // URLハッシュを更新
+    history.replaceState(null, '', '#' + version);
+  }
+
+  // ボタンクリックイベントの設定
+  toggleButtons.forEach(btn => {
+    btn.addEventListener('click', function() {
+      const version = this.getAttribute('data-toggle');
+      switchVersion(version);
+
+      // スムーズにコンテンツエリアにスクロール
+      const mainContent = document.querySelector('main');
+      if (mainContent) {
+        mainContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // ブラウザの戻る/進むボタン対応
+  window.addEventListener('hashchange', function() {
+    initializeView();
+  });
+
+  // 初期化実行
+  initializeView();
+})();
+</script>
 </body></html>
