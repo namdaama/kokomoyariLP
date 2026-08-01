@@ -1,0 +1,37 @@
+# 付箋1枚 = 1エントリ。
+# NOTE: 現時点ではまだ実際の付箋写真（Miro Stickies Captureでの取り込み分）が無いため、
+#       仕組み検証用のダミーデータとして photos/notes/placeholder-note.svg（仮画像）を使っている。
+#       本番データ投入時は photos/notes/ に実際の付箋写真を置いて image を差し替えること。
+#       （画像の置き場は用途別に分離: photos/notes/=付箋1枚1枚、photos/boards/=会場・壁全体の様子）
+notes:
+  - id: vol3-shukatsu-001
+    image: photos/notes/placeholder-note.svg
+    event: vol3
+    theme: shukatsu
+    question: "面接で「自分らしさ」を聞かれた時、何を答えていますか？"
+    excerpt: null
+    alt: "就活生の本音テーマの付箋（仮データ）"
+
+  - id: vol3-renai-001
+    image: photos/notes/placeholder-note.svg
+    event: vol3
+    theme: renai
+    question: "パートナーに一番見せたくない自分は、どんな自分ですか？"
+    excerpt: null
+    alt: "恋愛の哲学テーマの付箋（仮データ）"
+
+  - id: vol2-renai-001
+    image: photos/notes/placeholder-note.svg
+    event: vol2
+    theme: renai
+    question: "「好き」と「必要」の違いは何だと思いますか？"
+    excerpt: null
+    alt: "恋愛の哲学テーマの付箋（仮データ）"
+
+  - id: vol2-fukui-001
+    image: photos/notes/placeholder-note.svg
+    event: vol2
+    theme: fukui
+    question: "福井で暮らし続けるとしたら、譲れない条件は何ですか？"
+    excerpt: null
+    alt: "福井という選択テーマの付箋（仮データ）"

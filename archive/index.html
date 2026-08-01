@@ -1,0 +1,142 @@
+<!-- 自動生成: scripts/build-archive.mjs で生成。直接編集しないこと -->
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>これまでの問い | ここもやり展</title>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="archive.css">
+</head>
+<body>
+<header class="hero">
+  <div class="container">
+    <h1>これまでの問い</h1>
+    <p class="tagline">過去の展示で交わされた、問いと回答のアーカイブです。</p>
+    <a href="../index.html" class="btn">← トップに戻る</a>
+  </div>
+</header>
+<main class="container">
+  <section id="today-note">
+    <h2>今日出会う一枚</h2>
+    <div id="today-note-slot"></div>
+    <button id="reroll-btn" class="btn">別の1枚を見る</button>
+  </section>
+
+  <section id="filters">
+    <h2>絞り込み</h2>
+    <div class="filter-group" data-filter-group="theme">
+      <button class="btn filter-btn is-active" data-filter-theme="all">すべてのテーマ</button>
+        <button class="btn filter-btn" data-filter-theme="shukatsu">就活生の本音</button>
+        <button class="btn filter-btn" data-filter-theme="renai">恋愛の哲学</button>
+        <button class="btn filter-btn" data-filter-theme="fukui">福井という選択</button>
+    </div>
+    <div class="filter-group" data-filter-group="event">
+      <button class="btn filter-btn is-active" data-filter-event="all">すべての回</button>
+        <button class="btn filter-btn" data-filter-event="vol2">ココもやり展 vol.2</button>
+        <button class="btn filter-btn" data-filter-event="vol3">ココもやり展 vol.3</button>
+    </div>
+  </section>
+
+  <section id="note-list">
+    <h2>一覧（<span id="note-count">4</span>件）</h2>
+    <div class="themes-container" id="note-grid">
+      <div class="theme-card theme-blue note-card" data-theme="shukatsu" data-event="vol3" data-id="vol3-shukatsu-001">
+        <img src="images/notes/placeholder-note.svg" alt="就活生の本音テーマの付箋（仮データ）" loading="lazy" class="note-card-image">
+        <p class="note-card-question">面接で「自分らしさ」を聞かれた時、何を答えていますか？</p>
+        
+        <p class="note-card-meta">就活生の本音 / ココもやり展 vol.3</p>
+      </div>
+
+      <div class="theme-card theme-pink note-card" data-theme="renai" data-event="vol3" data-id="vol3-renai-001">
+        <img src="images/notes/placeholder-note.svg" alt="恋愛の哲学テーマの付箋（仮データ）" loading="lazy" class="note-card-image">
+        <p class="note-card-question">パートナーに一番見せたくない自分は、どんな自分ですか？</p>
+        
+        <p class="note-card-meta">恋愛の哲学 / ココもやり展 vol.3</p>
+      </div>
+
+      <div class="theme-card theme-pink note-card" data-theme="renai" data-event="vol2" data-id="vol2-renai-001">
+        <img src="images/notes/placeholder-note.svg" alt="恋愛の哲学テーマの付箋（仮データ）" loading="lazy" class="note-card-image">
+        <p class="note-card-question">「好き」と「必要」の違いは何だと思いますか？</p>
+        
+        <p class="note-card-meta">恋愛の哲学 / ココもやり展 vol.2</p>
+      </div>
+
+      <div class="theme-card theme-green note-card" data-theme="fukui" data-event="vol2" data-id="vol2-fukui-001">
+        <img src="images/notes/placeholder-note.svg" alt="福井という選択テーマの付箋（仮データ）" loading="lazy" class="note-card-image">
+        <p class="note-card-question">福井で暮らし続けるとしたら、譲れない条件は何ですか？</p>
+        
+        <p class="note-card-meta">福井という選択 / ココもやり展 vol.2</p>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="footer">
+  <div class="container">ここもやり展</div>
+</footer>
+<script>
+const NOTES = [{"id":"vol3-shukatsu-001","image":"images/notes/placeholder-note.svg","theme":"shukatsu","event":"vol3","question":"面接で「自分らしさ」を聞かれた時、何を答えていますか？","excerpt":null,"alt":"就活生の本音テーマの付箋（仮データ）"},{"id":"vol3-renai-001","image":"images/notes/placeholder-note.svg","theme":"renai","event":"vol3","question":"パートナーに一番見せたくない自分は、どんな自分ですか？","excerpt":null,"alt":"恋愛の哲学テーマの付箋（仮データ）"},{"id":"vol2-renai-001","image":"images/notes/placeholder-note.svg","theme":"renai","event":"vol2","question":"「好き」と「必要」の違いは何だと思いますか？","excerpt":null,"alt":"恋愛の哲学テーマの付箋（仮データ）"},{"id":"vol2-fukui-001","image":"images/notes/placeholder-note.svg","theme":"fukui","event":"vol2","question":"福井で暮らし続けるとしたら、譲れない条件は何ですか？","excerpt":null,"alt":"福井という選択テーマの付箋（仮データ）"}];
+
+function pickRandomNote(notes, excludeId) {
+  const pool = excludeId ? notes.filter((n) => n.id !== excludeId) : notes;
+  const source = pool.length > 0 ? pool : notes;
+  return source[Math.floor(Math.random() * source.length)];
+}
+
+function renderTodayNote(note) {
+  const slot = document.getElementById("today-note-slot");
+  if (!note) {
+    slot.innerHTML = "<p>まだ問いが登録されていません。</p>";
+    return;
+  }
+  slot.innerHTML =
+    '<div class="theme-card note-card note-card--featured">' +
+    '<img src="' + note.image + '" alt="' + note.alt + '" class="note-card-image">' +
+    '<p class="note-card-question">' + note.question + "</p>" +
+    (note.excerpt ? '<p class="note-card-excerpt">' + note.excerpt + "</p>" : "") +
+    "</div>";
+  slot.dataset.currentId = note.id;
+}
+
+let currentTodayNote = pickRandomNote(NOTES);
+renderTodayNote(currentTodayNote);
+
+document.getElementById("reroll-btn").addEventListener("click", () => {
+  currentTodayNote = pickRandomNote(NOTES, currentTodayNote?.id);
+  renderTodayNote(currentTodayNote);
+});
+
+let currentTheme = "all";
+let currentEvent = "all";
+
+function applyFilters() {
+  const cards = document.querySelectorAll("#note-grid .note-card");
+  let visibleCount = 0;
+  cards.forEach((card) => {
+    const matchesTheme = currentTheme === "all" || card.dataset.theme === currentTheme;
+    const matchesEvent = currentEvent === "all" || card.dataset.event === currentEvent;
+    const visible = matchesTheme && matchesEvent;
+    card.style.display = visible ? "" : "none";
+    if (visible) visibleCount += 1;
+  });
+  document.getElementById("note-count").textContent = String(visibleCount);
+}
+
+document.querySelectorAll("[data-filter-theme]").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    currentTheme = btn.dataset.filterTheme;
+    document.querySelectorAll("[data-filter-theme]").forEach((b) => b.classList.toggle("is-active", b === btn));
+    applyFilters();
+  });
+});
+
+document.querySelectorAll("[data-filter-event]").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    currentEvent = btn.dataset.filterEvent;
+    document.querySelectorAll("[data-filter-event]").forEach((b) => b.classList.toggle("is-active", b === btn));
+    applyFilters();
+  });
+});
+</script>
+</body>
+</html>
