@@ -1,0 +1,12 @@
+{
+  "name": "kokomoyari-archive-build",
+  "private": true,
+  "type": "module",
+  "description": "archive/ 配下のアーカイブページを生成するためだけのビルドスクリプト。トップページ(index.html)の閲覧・編集には無関係。",
+  "scripts": {
+    "archive:build": "node scripts/build-archive.mjs"
+  },
+  "devDependencies": {
+    "js-yaml": "^4.1.0"
+  }
+}

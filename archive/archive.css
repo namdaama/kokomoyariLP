@@ -1,0 +1,71 @@
+/* archive.css - アーカイブページ専用スタイル（手書き、ビルド生成対象外） */
+
+.note-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.note-card-image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.note-card-question {
+  font-weight: bold;
+  margin: 0;
+}
+
+.note-card-excerpt {
+  font-size: 0.9rem;
+  opacity: 0.85;
+  margin: 0;
+}
+
+.note-card-meta {
+  font-size: 0.8rem;
+  opacity: 0.7;
+  margin: 0;
+}
+
+.note-card--featured {
+  max-width: 420px;
+  margin: 0 auto 1rem;
+  transform: none;
+}
+
+#today-note {
+  text-align: center;
+}
+
+#today-note-slot {
+  display: flex;
+  justify-content: center;
+}
+
+.filter-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.filter-btn.is-active {
+  background: var(--turquoise);
+  color: #fff;
+  border-color: var(--turquoise);
+}
+
+#note-grid.themes-container {
+  justify-items: stretch;
+}
+
+#note-grid .theme-card {
+  transform: none;
+}
+
+#note-grid .theme-card:hover {
+  transform: scale(1.02);
+}

@@ -1,0 +1,12 @@
+# 開催回マスタ。notes.yaml の各エントリはここの id を参照する。
+# 会場・壁全体の「引きの写真」は photos/boards/ に置く（例: photos/boards/vol3-エルパホール外観.jpg）。
+# 現時点ではまだアーカイブページのUIには組み込んでいない（将来、開催回ごとの雰囲気紹介に使う想定の置き場所）。
+events:
+  - id: vol2
+    name: ココもやり展 vol.2
+    date: "2024-XX-XX"
+    venue: 市民プラザたけふ
+  - id: vol3
+    name: ココもやり展 vol.3
+    date: "2025-09-14"
+    venue: ラブリーパートナーエルパ 2F エルパホール
